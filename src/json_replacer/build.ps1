@@ -1,1 +1,1 @@
-go build -o terraform-provider-json_replacer
+go build -o "../../builds/terraform-provider-json_replacer"
