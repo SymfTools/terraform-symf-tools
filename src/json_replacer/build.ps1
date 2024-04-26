@@ -1,0 +1,1 @@
+go build -o terraform-provider-json_replacer
