@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {},
+	"extensions": {
+		"recommendations": [
+			"golang.go",
+			"hashicorp.terraform",
+			"ms-vscode.powershell"
+		]
+	}
+}
