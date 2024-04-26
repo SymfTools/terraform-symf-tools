@@ -1,0 +1,1 @@
+go build -o "../builds/terraform-provider-json_replacer"
