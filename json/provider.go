@@ -8,8 +8,8 @@ import (
 
 func Provider() *schema.Provider {
 	return &schema.Provider{
-		ResourcesMap: map[string]*schema.Resource{
-			"json_replacer": replacer.ResourceJsonModifier(),
+		DataSourcesMap: map[string]*schema.Resource{
+			"json_replacer": replacer.DataSourceJsonModifier(),
 		},
 	}
 }
