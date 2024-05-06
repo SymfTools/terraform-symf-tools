@@ -45,5 +45,5 @@ func modifyJson(d *schema.ResourceData) error {
 	outputJson, _ := json.Marshal(jsonData)
 	d.Set("result", string(outputJson))
 
-	return nil
+	return nil;
 }

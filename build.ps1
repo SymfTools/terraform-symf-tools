@@ -1,1 +1,1 @@
-go build -o "builds/terraform-symf-tools"
+go build -o "builds/terraform-provider-symftools_v1.0.0.exe"
