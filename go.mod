@@ -2,7 +2,10 @@ module github.com/Boltairex/terraform-symf-tools
 
 go 1.22.2
 
-require github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0
+require (
+	github.com/hashicorp/terraform-plugin-framework v1.8.0
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0
+)
 
 require (
 	github.com/agext/levenshtein v1.2.2 // indirect
@@ -17,7 +20,6 @@ require (
 	github.com/hashicorp/go-version v1.6.0 // indirect
 	github.com/hashicorp/hcl/v2 v2.19.1 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
-	github.com/hashicorp/terraform-plugin-framework v1.8.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.22.2 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.3 // indirect
