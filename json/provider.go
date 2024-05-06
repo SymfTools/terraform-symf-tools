@@ -8,6 +8,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/provider"
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // Enkapsulacja providera
@@ -26,6 +27,7 @@ type DataStorage struct {
 }
 
 func New(version string) func() provider.Provider {
+
 	return func() provider.Provider {
 		return &JsonProvider{
 			version: version,
@@ -33,13 +35,16 @@ func New(version string) func() provider.Provider {
 	}
 }
 
-func (p *JsonProvider) Metadata(_ context.Context, request provider.MetadataRequest, response *provider.MetadataResponse) {
+func (p *JsonProvider) Metadata(context context.Context, request provider.MetadataRequest, response *provider.MetadataResponse) {
+	tflog.Info(context, "Setting JsonProvider metadata...")
     response.TypeName = "symf"
     response.Version = p.version
 }
 
 // Schema should return the schema for this provider.
-func (p *JsonProvider) Schema(_ context.Context, request provider.SchemaRequest, response *provider.SchemaResponse) {
+func (p *JsonProvider) Schema(context context.Context, request provider.SchemaRequest, response *provider.SchemaResponse) {
+	tflog.Info(context, "Configuring JsonProvider...")
+
 	response.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"test": schema.StringAttribute{
