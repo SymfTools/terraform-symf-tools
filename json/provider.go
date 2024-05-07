@@ -3,6 +3,7 @@ package json
 import (
 	"context"
 
+	"github.com/Boltairex/terraform-symf-tools/json/functions"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/function"
 	"github.com/hashicorp/terraform-plugin-framework/provider"
@@ -71,23 +72,22 @@ func (p *JsonProvider) Configure(context context.Context, request provider.Confi
 // DataSources returns a slice of functions to instantiate each DataSource
 // implementation.
 func (p *JsonProvider) DataSources(_ context.Context) []func() datasource.DataSource {
-	return nil;
-	/*return []func() datasource.DataSource {
-		nil,
-	};*/
+	return []func() datasource.DataSource {
+		NewExampleDataSource,
+	};
 }
 
 // Resources returns a slice of functions to instantiate each Resource
 // implementation.
 func (p *JsonProvider) Resources(_ context.Context) []func() resource.Resource {
-	return nil;
-	/*return []func() resource.Resource {
-		nil,
-	};*/
+	return []func() resource.Resource {
+		NewExampleResource,
+	};
 }
 
 func (p *JsonProvider) Functions(_ context.Context) []func() function.Function {
 	return []func() function.Function {
+		functions.NewJsonReplacer,
 		NewExampleFunction,
-	};
+	}
 }

@@ -7,20 +7,22 @@ import (
 )
 
 var (
-	_ function.Function = ExampleFunction{}
+	_ function.Function = &ExampleFunction{}
 )
 
 func NewExampleFunction() function.Function {
-	return ExampleFunction{}
+	return &ExampleFunction{}
 }
 
-type ExampleFunction struct{}
+type ExampleFunction struct{
+	function.Function
+}
 
-func (r ExampleFunction) Metadata(_ context.Context, req function.MetadataRequest, resp *function.MetadataResponse) {
+func (r *ExampleFunction) Metadata(_ context.Context, req function.MetadataRequest, resp *function.MetadataResponse) {
 	resp.Name = "example"
 }
 
-func (r ExampleFunction) Definition(_ context.Context, _ function.DefinitionRequest, resp *function.DefinitionResponse) {
+func (r *ExampleFunction) Definition(_ context.Context, _ function.DefinitionRequest, resp *function.DefinitionResponse) {
 	resp.Definition = function.Definition{
 		Summary:             "Example function",
 		MarkdownDescription: "Echoes given argument as result",
@@ -43,5 +45,5 @@ func (r ExampleFunction) Run(ctx context.Context, req function.RunRequest, resp 
 		return
 	}
 
-	resp.Error = function.ConcatFuncErrors(resp.Result.Set(ctx, data))
+	resp.Error = function.ConcatFuncErrors(resp.Result.Set(ctx, data + " (test czy dziala)"))
 }
